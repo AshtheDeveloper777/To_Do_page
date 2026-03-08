@@ -5,7 +5,6 @@ const tabs = document.querySelectorAll(".tab");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-// current active tab
 let currentTab = "To Do";
 
 function saveTasks(){
@@ -18,7 +17,6 @@ taskList.innerHTML="";
 
 tasks.forEach((task,index)=>{
 
-// filter tasks by tab
 if(task.status !== currentTab) return;
 
 const div=document.createElement("div");
@@ -73,18 +71,14 @@ renderTasks();
 
 });
 
-// TAB SWITCHING
 tabs.forEach(tab=>{
 
 tab.addEventListener("click",()=>{
 
-// remove active class
 tabs.forEach(t=>t.classList.remove("active"));
 
-// activate clicked tab
 tab.classList.add("active");
 
-// update current tab
 currentTab = tab.textContent;
 
 renderTasks();
